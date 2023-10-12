@@ -1,3 +1,4 @@
+import 'package:csfitness/views/exercise_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:csfitness/constants/routes.dart';
 import 'package:csfitness/enums/menu_action.dart';
@@ -5,6 +6,7 @@ import 'package:csfitness/services/auth/auth_service.dart';
 import 'package:csfitness/services/crud/notes_service.dart';
 import 'package:csfitness/utilities/dialogs/logout_dialog.dart';
 import 'package:csfitness/views/notes/notes_list_view.dart';
+
 
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Notes'),
+        title: const Text('My progress'),
         actions: [
           IconButton(
             onPressed: () {
@@ -47,6 +49,14 @@ class _NotesViewState extends State<NotesView> {
                       (_) => false,
                     );
                   }
+                  break;
+                case MenuAction.testing:
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ExerciseScreen(), 
+                    ),
+                  );
+                  break;
               }
             },
             itemBuilder: (context) {
@@ -54,6 +64,10 @@ class _NotesViewState extends State<NotesView> {
                 PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
                   child: Text('Log out'),
+                ),
+                PopupMenuItem<MenuAction>(
+                  value: MenuAction.testing,
+                  child: Text('Exercises'),
                 ),
               ];
             },

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:csfitness/extensions/list/filter.dart';
 import 'package:csfitness/services/crud/crud_exceptions.dart';
@@ -336,7 +335,7 @@ class DatabaseNote {
 
   @override
   int get hashCode => id.hashCode;
-}
+} 
 
 const dbName = 'notes.db';
 const noteTable = 'note';
@@ -355,7 +354,10 @@ const createNoteTable = '''CREATE TABLE IF NOT EXISTS "note" (
         "id"	INTEGER NOT NULL,
         "user_id"	INTEGER NOT NULL,
         "text"	TEXT,
+        "text2"	TEXT,
         "is_synced_with_cloud"	INTEGER NOT NULL DEFAULT 0,
         FOREIGN KEY("user_id") REFERENCES "user"("id"),
         PRIMARY KEY("id" AUTOINCREMENT)
       );''';
+
+
